@@ -1,0 +1,198 @@
+Agora que o seu sistema está configurado e funcionando, você pode testar os endpoints da API no Postman. Vou te guiar nos passos para testar os endpoints de criar, listar, atualizar e excluir pedidos.
+
+Aqui estão os endpoints que você deve testar, conforme o que foi solicitado:
+
+Endpoints Criados
+
+1. Criar um novo pedido
+Método: POST
+URL: http://localhost:8080/api/pedidos
+Corpo da requisição (JSON):
+
+{
+    "cliente": "João Silva",
+    "endereco": "Rua X, 123",
+    "itens": ["Pizza", "Refrigerante"],
+    "status": "ABERTO",
+    "plataforma": "MOBILE"
+}
+
+
+2. Listar todos os pedidos com status "ABERTO"
+Método: GET
+URL: http://localhost:8080/api/pedidos/abertos
+
+
+3. Atualizar o status de um pedido
+Método: PUT
+URL: http://localhost:8080/api/pedidos/{id}
+Corpo da requisição (JSON):
+
+{
+    "status": "EM_PREPARACAO"
+}
+
+
+4. Excluir um pedido (cancelamento)
+Método: DELETE
+URL: http://localhost:8080/api/pedidos/{id}
+
+
+
+Passos no Postman para Testar os Endpoints:
+
+1. Criar um Novo Pedido (POST)
+
+Abra o Postman.
+
+Selecione o método POST.
+
+No campo URL, digite http://localhost:8080/api/pedidos.
+
+Selecione a aba Body.
+
+Escolha a opção raw e selecione JSON no menu dropdown.
+
+Cole o corpo da requisição (JSON) que foi mostrado acima.
+
+Clique em Send.
+
+
+Se tudo correr bem, você receberá uma resposta com o código de status 201 Created e os detalhes do pedido criado.
+
+2. Listar Todos os Pedidos com Status "ABERTO" (GET)
+
+Abra o Postman.
+
+Selecione o método GET.
+
+No campo URL, digite http://localhost:8080/api/pedidos/abertos.
+
+Clique em Send.
+
+
+Você verá uma resposta com os pedidos em aberto no formato JSON.
+
+3. Atualizar o Status de um Pedido (PUT)
+
+Abra o Postman.
+
+Selecione o método PUT.
+
+No campo URL, digite http://localhost:8080/api/pedidos/{id}, substituindo {id} pelo ID do pedido que você quer atualizar (por exemplo, 1).
+
+Selecione a aba Body.
+
+Escolha a opção raw e selecione JSON.
+
+Cole o seguinte corpo da requisição (para mudar o status):
+
+{
+    "status": "EM_PREPARACAO"
+}
+
+Clique em Send.
+
+
+O status do pedido será alterado, e você verá a resposta com o código 200 OK e o pedido atualizado.
+
+4. Excluir um Pedido (DELETE)
+
+Abra o Postman.
+
+Selecione o método DELETE.
+
+No campo URL, digite http://localhost:8080/api/pedidos/{id}, substituindo {id} pelo ID do pedido que você deseja excluir.
+
+Clique em Send.
+
+
+Você verá a resposta com o código 200 OK e uma mensagem de sucesso ou falha do cancelamento.
+
+
+---
+
+Exemplos de Respostas:
+
+1. Criar Pedido:
+
+Status: 201 Created
+
+Corpo:
+
+{
+  "id": 1,
+  "cliente": "João Silva",
+  "endereco": "Rua X, 123",
+  "itens": ["Pizza", "Refrigerante"],
+  "status": "ABERTO",
+  "plataforma": "MOBILE"
+}
+
+
+
+2. Listar Pedidos:
+
+Status: 200 OK
+
+Corpo:
+
+[
+  {
+    "id": 1,
+    "cliente": "João Silva",
+    "endereco": "Rua X, 123",
+    "itens": ["Pizza", "Refrigerante"],
+    "status": "ABERTO",
+    "plataforma": "MOBILE"
+  }
+]
+
+
+
+3. Atualizar Pedido:
+
+Status: 200 OK
+
+Corpo:
+
+{
+  "id": 1,
+  "cliente": "João Silva",
+  "endereco": "Rua X, 123",
+  "itens": ["Pizza", "Refrigerante"],
+  "status": "EM_PREPARACAO",
+  "plataforma": "MOBILE"
+}
+
+
+
+4. Excluir Pedido:
+
+Status: 200 OK
+
+Corpo:
+
+{
+  "message": "Pedido excluído com sucesso"
+}
+
+
+
+
+
+---
+
+Dicas:
+
+Verifique sempre se o servidor Spring Boot está rodando (geralmente localhost:8080).
+
+Verifique o console do Spring Boot para mensagens de erro, caso a requisição falhe.
+
+A resposta pode variar de acordo com a implementação de status HTTP que você configurar no controller.
+
+
+
+---
+
+Isso deve cobrir os testes dos seus endpoints no Postman! Se precisar de mais alguma ajuda ou ajustes, é só avisar!
