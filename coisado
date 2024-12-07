@@ -25,13 +25,13 @@ URL: http://localhost:8080/api/pedidos/abertos
 
 3. Atualizar o status de um pedido
 Método: PUT
-URL: http://localhost:8080/api/pedidos/{id}
 Corpo da requisição (JSON):
 
 {
     "status": "EM_PREPARACAO"
 }
 
+http://localhost:8081/api/pedidos/2/status?status=FINALIZADO
 
 4. Excluir um pedido (cancelamento)
 Método: DELETE
